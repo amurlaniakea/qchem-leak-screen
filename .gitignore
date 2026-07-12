@@ -17,3 +17,8 @@ store.db
 # Editor
 .vscode/
 .idea/
+
+# Coverage artifacts (local run artifacts, never commit)
+.coverage
+.coverage.*
+htmlcov/

@@ -13,7 +13,6 @@ authors = [{ name = "Pedro Sordo Martinez", email = "amurlaniakea@gmail.com" }]
 keywords = ["cheminformatics", "quantum-chemistry", "sanity-check", "hallucination", "property-prediction"]
 dependencies = [
     "typer>=0.12",
-    "rdkit>=2024.3; python_version<'3.13'",
 ]
 
 [project.urls]
