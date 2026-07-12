@@ -1,0 +1,9 @@
+{
+  "smiles": "O",
+  "predicted": {
+    "homo_ev": -12.6,
+    "lumo_ev": -1.2,
+    "gap_ev": 11.4,
+    "dipole_debye": 1.85
+  }
+}

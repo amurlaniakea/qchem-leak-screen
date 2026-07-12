@@ -1,0 +1,9 @@
+{
+  "smiles": "CCO",
+  "predicted": {
+    "homo_ev": -10.5,
+    "lumo_ev": 1.0,
+    "gap_ev": 11.5,
+    "dipole_debye": 1.69
+  }
+}

@@ -1,0 +1,19 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+build/
+dist/
+
+# Aislamiento: jamas filtrar secretos del usuario
+.hermes/
+.gnupg/
+.aws/
+credentials/
+*.db
+store.db
+
+# Editor
+.vscode/
+.idea/

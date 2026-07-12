@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "qchem-leak-screen"
+version = "0.1.0"
+description = "Perimeter physical-sanity filter for AI-predicted quantum-chemical properties"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "AGPL-3.0-or-later" }
+authors = [{ name = "Pedro Sordo Martinez", email = "amurlaniakea@gmail.com" }]
+keywords = ["cheminformatics", "quantum-chemistry", "sanity-check", "hallucination", "property-prediction"]
+dependencies = [
+    "typer>=0.12",
+    "rdkit>=2024.3; python_version<'3.13'",
+]
+
+[project.urls]
+Homepage = "https://github.com/amurlaniakea/qchem-leak-screen"
+Repository = "https://github.com/amurlaniakea/qchem-leak-screen"
+
+[project.scripts]
+qls = "qchem_leak_screen.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "." }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+markers = [
+    "slow: marks tests that are statistically expensive (run with -m slow)",
+]
+
+[tool.coverage.run]
+source = ["qchem_leak_screen"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+fail_under = 80
+
+[tool.ruff]
+line-length = 100
