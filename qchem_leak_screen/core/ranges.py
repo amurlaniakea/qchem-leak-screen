@@ -1,5 +1,5 @@
-"""R4 - Rangos fisicos plausibles: gap > 0 para aislante, dipolo en rango, sin NaN/inf.
-"""
+"""R4 - Rangos fisicos plausibles: gap > 0 para aislante, dipolo en rango, sin NaN/inf."""
+
 from __future__ import annotations
 
 import math
@@ -11,8 +11,12 @@ from qchem_leak_screen.core.dataclasses import MolInput, RuleViolation
 def check_ranges(mol: MolInput) -> RuleViolation | None:
     p = mol.predicted
     # NaN / inf en cualquier prop => rango invalido
-    for name, val in (("homo_ev", p.homo_ev), ("lumo_ev", p.lumo_ev),
-                      ("gap_ev", p.gap_ev), ("dipole_debye", p.dipole_debye)):
+    for name, val in (
+        ("homo_ev", p.homo_ev),
+        ("lumo_ev", p.lumo_ev),
+        ("gap_ev", p.gap_ev),
+        ("dipole_debye", p.dipole_debye),
+    ):
         if val is not None and (isinstance(val, float) and (math.isnan(val) or math.isinf(val))):
             return RuleViolation(
                 rule_id="R4",

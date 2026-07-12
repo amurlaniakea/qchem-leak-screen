@@ -4,6 +4,7 @@ Cada regla es una funcion pura (MolInput) -> Optional[RuleViolation].
 apply_rules recorre el registro, aplica las reglas cuyos datos esten presentes,
 agrega las violaciones y finaliza el veredicto (PASS/FAIL).
 """
+
 from __future__ import annotations
 
 from typing import Callable, List, Optional
@@ -16,10 +17,10 @@ from qchem_leak_screen.core.topology import check_topology
 
 # Orden estable: R1..R4
 RULES: List[Callable[[MolInput], Optional[RuleViolation]]] = [
-    check_topology,   # R1
-    check_koopmans,   # R2
-    check_symmetry,   # R3
-    check_ranges,     # R4
+    check_topology,  # R1
+    check_koopmans,  # R2
+    check_symmetry,  # R3
+    check_ranges,  # R4
 ]
 
 

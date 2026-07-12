@@ -14,6 +14,7 @@ Como el filtro recibe SOLO el SMILES + props, R1 valida:
     indicio de hallucinacion estructural (una molecula pequena con carga extrema
     es fisicamente improbable y suele senalar un SMILES corrupto del generador).
 """
+
 from __future__ import annotations
 
 import re
@@ -57,6 +58,7 @@ def _balanced(smiles: str) -> bool:
     # anillos: contar digitos FUERA de corchetes [...] (los de carga van dentro)
     import re as _re
     from collections import Counter
+
     outside = _re.sub(r"\[[^\]]*\]", "", smiles)
     rings = _re.findall(r"\d", outside)
     counts = Counter(rings)
@@ -85,6 +87,6 @@ def check_topology(mol: MolInput) -> RuleViolation | None:
             rule_id="R1",
             severity="FAIL",
             reason=f"net_charge_out_of_range: |q|={abs(q)} > {MAX_NET_CHARGE} "
-                    f"(indicio de hallucinacion estructural)",
+            f"(indicio de hallucinacion estructural)",
         )
     return None

@@ -10,14 +10,16 @@ def test_r3_skipped_without_geometry():
 def test_r3_inversion_group_with_dipole_fail():
     # O2 centrosimetrico (dos atomos en x y -x), pero dipolo != 0 => violacion
     xyz = "2\n\nO 0.6 0.0 0.0\nO -0.6 0.0 0.0\n"
-    v = check_symmetry(MolInput(
-        smiles="O=O", predicted=PropPrediction(dipole_debye=1.5), geometry_xyz=xyz))
+    v = check_symmetry(
+        MolInput(smiles="O=O", predicted=PropPrediction(dipole_debye=1.5), geometry_xyz=xyz)
+    )
     assert v is not None and v.rule_id == "R3" and v.severity == "FAIL"
     assert "dipole_in_inversion_group" in v.reason, v.reason
 
 
 def test_r3_inversion_group_zero_dipole_ok():
     xyz = "2\n\nO 0.6 0.0 0.0\nO -0.6 0.0 0.0\n"
-    v = check_symmetry(MolInput(
-        smiles="O=O", predicted=PropPrediction(dipole_debye=0.0), geometry_xyz=xyz))
+    v = check_symmetry(
+        MolInput(smiles="O=O", predicted=PropPrediction(dipole_debye=0.0), geometry_xyz=xyz)
+    )
     assert v is None, v

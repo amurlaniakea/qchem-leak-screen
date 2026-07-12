@@ -1,5 +1,3 @@
-import math
-
 from qchem_leak_screen.core.dataclasses import MolInput, PropPrediction
 from qchem_leak_screen.core.ranges import check_ranges
 

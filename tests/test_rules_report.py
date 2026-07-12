@@ -4,8 +4,12 @@ from qchem_leak_screen.core.rules import apply_rules
 
 
 def test_apply_rules_water_pass():
-    v = apply_rules(MolInput(smiles="O", predicted=PropPrediction(
-        homo_ev=-12.6, lumo_ev=-1.2, gap_ev=11.4, dipole_debye=1.85)))
+    v = apply_rules(
+        MolInput(
+            smiles="O",
+            predicted=PropPrediction(homo_ev=-12.6, lumo_ev=-1.2, gap_ev=11.4, dipole_debye=1.85),
+        )
+    )
     assert isinstance(v, Verdict)
     assert v.verdict == "PASS"
     # R3 skipped (sin geometria) pero no FAIL
@@ -13,8 +17,12 @@ def test_apply_rules_water_pass():
 
 
 def test_apply_rules_hallucinated_fail():
-    v = apply_rules(MolInput(smiles="c1ccccc1", predicted=PropPrediction(
-        homo_ev=-3.0, lumo_ev=-1.0, gap_ev=-2.0, dipole_debye=999.0)))
+    v = apply_rules(
+        MolInput(
+            smiles="c1ccccc1",
+            predicted=PropPrediction(homo_ev=-3.0, lumo_ev=-1.0, gap_ev=-2.0, dipole_debye=999.0),
+        )
+    )
     assert v.verdict == "FAIL"
     ids = {x.rule_id for x in v.violations}
     assert "R2" in ids and "R4" in ids

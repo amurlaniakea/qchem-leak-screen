@@ -8,6 +8,7 @@ Implementacion minima del MVP:
   - Si grupo con inversion y dipole_debye != 0 (con tolerancia) => violacion.
   - SIN geometria => R3_skipped (nunca FAIL por falta de dato).
 """
+
 from __future__ import annotations
 
 from qchem_leak_screen.core.dataclasses import MolInput, RuleViolation
@@ -32,9 +33,13 @@ def _has_inversion_center(coords) -> bool:
     if not coords:
         return False
     s = set(coords)
-    for (x, y, z) in coords:
-        if not any(abs(-x - ox) < INVERSION_TOL and abs(-y - oy) < INVERSION_TOL
-                   and abs(-z - oz) < INVERSION_TOL for (ox, oy, oz) in s):
+    for x, y, z in coords:
+        if not any(
+            abs(-x - ox) < INVERSION_TOL
+            and abs(-y - oy) < INVERSION_TOL
+            and abs(-z - oz) < INVERSION_TOL
+            for (ox, oy, oz) in s
+        ):
             return False
     return True
 
@@ -59,7 +64,6 @@ def check_symmetry(mol: MolInput) -> RuleViolation | None:
             return RuleViolation(
                 rule_id="R3",
                 severity="FAIL",
-                reason=f"dipole_in_inversion_group: grupo con inversion pero "
-                        f"dipole={d} D != 0",
+                reason=f"dipole_in_inversion_group: grupo con inversion pero dipole={d} D != 0",
             )
     return None

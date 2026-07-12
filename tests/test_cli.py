@@ -34,8 +34,8 @@ def test_e2_hallucinated_fail_with_violations():
     assert d["verdict"] == "FAIL"
     rule_ids = {v["rule_id"] for v in d["violations"]}
     # external-validity: el fixture imposible debe disparar R1-R4
-    assert "R2" in rule_ids, rule_ids       # gap negativo
-    assert "R4" in rule_ids, rule_ids       # dipolo 999 fuera de rango
+    assert "R2" in rule_ids, rule_ids  # gap negativo
+    assert "R4" in rule_ids, rule_ids  # dipolo 999 fuera de rango
     # razon de cada violacion presente
     for v in d["violations"]:
         assert v["reason"]

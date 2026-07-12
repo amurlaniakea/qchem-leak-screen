@@ -6,6 +6,7 @@ NO estan tuneadas para que los fixtures pasen; se derivan de fisica documentada:
 - DIP_MAX: las moleculas conocidas tienen dipolo <~15 D. 50 D es un limite de
   sanidad que solo una "halucionacion" superaria.
 """
+
 from __future__ import annotations
 
 TOL_KOOPMANS_EV: float = 2.0

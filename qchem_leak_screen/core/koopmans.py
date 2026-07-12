@@ -7,6 +7,7 @@ aprox. -epsilon_HOMO. En terminos de las props predichas:
 Si el modelo da gap negativo, la molecula no es un aislante estable (banda
 conduccion invertida) => hallucinacion o leakage.
 """
+
 from __future__ import annotations
 
 from qchem_leak_screen.core.constants import TOL_KOOPMANS_EV
@@ -29,7 +30,7 @@ def check_koopmans(mol: MolInput) -> RuleViolation | None:
                 rule_id="R2",
                 severity="FAIL",
                 reason=f"koopmans_gap_mismatch: |gap - (-homo)|="
-                        f"{abs(p.gap_ev - (-p.homo_ev)):.2f} eV > tol {TOL_KOOPMANS_EV}",
+                f"{abs(p.gap_ev - (-p.homo_ev)):.2f} eV > tol {TOL_KOOPMANS_EV}",
             )
     # (c) consistencia gap vs (lumo - homo)
     if p.gap_ev is not None and p.lumo_ev is not None and p.homo_ev is not None:
@@ -38,6 +39,6 @@ def check_koopmans(mol: MolInput) -> RuleViolation | None:
                 rule_id="R2",
                 severity="FAIL",
                 reason=f"gap_lumo_homo_mismatch: |gap - (lumo-homo)|="
-                        f"{abs(p.gap_ev - (p.lumo_ev - p.homo_ev)):.2f} eV > tol {TOL_KOOPMANS_EV}",
+                f"{abs(p.gap_ev - (p.lumo_ev - p.homo_ev)):.2f} eV > tol {TOL_KOOPMANS_EV}",
             )
     return None

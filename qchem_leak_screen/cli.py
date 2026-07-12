@@ -6,10 +6,10 @@ Uso:
 
 Las reglas son puras y no invocan NINGUN modelo externo (agnostico de modelo).
 """
+
 from __future__ import annotations
 
 import json
-import sys
 from pathlib import Path
 from typing import List
 
@@ -45,15 +45,17 @@ def _load_one(path: Path) -> MolInput:
 def _load_inputs(in_path: Path, smiles: str | None, props: str | None) -> List[MolInput]:
     if smiles is not None and props is not None:
         pred = json.loads(props)
-        return [MolInput(
-            smiles=smiles,
-            predicted=PropPrediction(
-                homo_ev=pred.get("homo_ev"),
-                lumo_ev=pred.get("lumo_ev"),
-                gap_ev=pred.get("gap_ev"),
-                dipole_debye=pred.get("dipole_debye"),
-            ),
-        )]
+        return [
+            MolInput(
+                smiles=smiles,
+                predicted=PropPrediction(
+                    homo_ev=pred.get("homo_ev"),
+                    lumo_ev=pred.get("lumo_ev"),
+                    gap_ev=pred.get("gap_ev"),
+                    dipole_debye=pred.get("dipole_debye"),
+                ),
+            )
+        ]
     if not in_path:
         raise typer.BadParameter("Usa --in <archivo|dir> o --smiles + --props")
     if in_path.is_dir():
