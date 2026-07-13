@@ -76,6 +76,15 @@ código detecta anomalías reales, no solo que "no tiene bugs".
   ni que sus propiedades sean las correctas — solo que no violan R1–R4.
 - No sustituye la validación experimental ni un cálculo *ab initio* de referencia.
 
+## Salida SARIF (Fase 2, feature 002)
+
+Además de JSON/Markdown, el filtro puede emitir **SARIF 2.1.0** (`--format sarif`),
+consumible por GitHub Code Scanning sin parser custom. Es **render puro** del
+`Verdict` ya existente: no añade lógica de validación ni cambia R1–R4. Cada regla es
+un `rule` SARIF; cada violación, un `result` con `level="error"` y el `reason` como
+`message.text`. Las reglas *skipped* no se emiten como hallazgo. Es transparencia de
+formato, no nueva autoridad física.
+
 ---
 
 *Documento vivo — actualizar al añadir reglas (Fase 2+) o benchmarks experimentales.*
