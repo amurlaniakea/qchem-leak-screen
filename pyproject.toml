@@ -15,6 +15,15 @@ dependencies = [
     "typer>=0.12",
 ]
 
+[project.optional-dependencies]
+# Test-only deps: jsonschema se usa para validar el SARIF 2.1.0 en tests (gate CI).
+# NO es dependencia de runtime: el CLI no valida el schema al emitir (DECISIÓN 3).
+testing = [
+    "pytest>=8",
+    "pytest-cov>=5",
+    "jsonschema>=4",
+]
+
 [project.urls]
 Homepage = "https://github.com/amurlaniakea/qchem-leak-screen"
 Repository = "https://github.com/amurlaniakea/qchem-leak-screen"

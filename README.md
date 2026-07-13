@@ -46,7 +46,32 @@ qls check --in fixtures/ --format markdown
 
 # inline
 qls check --smiles "O" --props '{"homo_ev":-12.6,"lumo_ev":-1.2,"gap_ev":11.4,"dipole_debye":1.85}'
+
+# salida SARIF 2.1.0 (para GitHub Code Scanning / consumidores SARIF)
+qls check --in fixtures/hallucinated.json --format sarif
 ```
+
+`--format` acepta: `json` (por defecto), `md`, `sarif`.
+
+## Integración en CI (SARIF)
+
+`--format sarif` emite un documento [SARIF 2.1.0](https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/sarif-v2.1.0-os.html)
+válido que puedes subir a GitHub Code Scanning. Ejemplo de paso en un workflow:
+
+```yaml
+- name: Sanity-check de propiedades cuánticas
+  run: |
+    qls check --in candidatos/ --format sarif > qls.sarif
+- name: Subir SARIF
+  uses: github/codeql-action/upload-sarif@v3
+  with:
+    sarif_file: qls.sarif
+```
+
+Cada regla R1–R4 aparece como un *rule*; cada violación como un *result* con
+`level="error"` y `message.text` = el motivo físico. Las reglas *skipped* (p. ej. R3
+sin geometría) no se emiten como hallazgo. Las `locations` apuntan al identificador
+de la molécula (no a líneas de código, porque el input es una molécula, no código).
 
 Códigos de salida: `0` = OK (veredicto emitido), `1` = hallazgo (FAIL),
 `2` = error de entrada.
