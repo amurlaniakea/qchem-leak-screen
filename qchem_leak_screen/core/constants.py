@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Pedro Sordo Martínez <amurlaniakea@gmail.com>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 """Constantes fisicas para los umbrales del filtro.
 
 NO estan tuneadas para que los fixtures pasen; se derivan de fisica documentada:
