@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Pedro Sordo Martínez <amurlaniakea@gmail.com>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 """R1 - Topologia: valencia atómica, carga neta, aromaticidad basica.
 
 Parser SMILES minimo propio (sin RDKit) suficiente para el MVP:

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Pedro Sordo Martínez <amurlaniakea@gmail.com>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 """R4 - Rangos fisicos plausibles: gap > 0 para aislante, dipolo en rango, sin NaN/inf."""
 
 from __future__ import annotations

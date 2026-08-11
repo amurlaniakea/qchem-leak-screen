@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Pedro Sordo Martínez <amurlaniakea@gmail.com>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 """R2 - Koopmans: consistencia de las energias de orbitales predichas.
 
 Teorema de Koopmans (aproximacion de orbitales moleculares): el gap de ionizacion

@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Pedro Sordo Martínez <amurlaniakea@gmail.com>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 """R3 - Simetria / punto-grupo: si hay geometria 3D y el grupo tiene inversion,
 el momento dipolar debe ser 0.
 

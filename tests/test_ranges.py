@@ -1,3 +1,6 @@
+# SPDX-FileCopyrightText: 2026 Pedro Sordo Martínez <amurlaniakea@gmail.com>
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 from qchem_leak_screen.core.dataclasses import MolInput, PropPrediction
 from qchem_leak_screen.core.ranges import check_ranges
 
